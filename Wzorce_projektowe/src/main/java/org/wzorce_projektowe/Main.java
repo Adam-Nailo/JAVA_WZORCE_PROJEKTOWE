@@ -1,6 +1,8 @@
 package org.wzorce_projektowe;
 
 
+import org.wzorce_projektowe.models.FamilyHouse;
+
 /**
  * Created by Adam Seweryn
  */
@@ -23,5 +25,7 @@ public class Main {
         boolean isTrue = true;
         Boolean.valueOf(isTrue);
 
+        FamilyHouse familyHouse = FamilyHouse.from(domek);
+        System.out.println(familyHouse);
     }
 }
