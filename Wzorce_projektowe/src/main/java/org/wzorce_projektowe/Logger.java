@@ -10,12 +10,12 @@ public class Logger {
     private Logger(){}
 
     public static Logger getInstance(){
-        if (Logger.instance==null){
-            instance = new Logger();
-        }
-        return instance;
+        return SingletonHolder.INSTANCE;
     }
     public void logToConsole(){
 //
+    }
+    private static class SingletonHolder{
+        private static final Logger INSTANCE = new Logger();
     }
 }
