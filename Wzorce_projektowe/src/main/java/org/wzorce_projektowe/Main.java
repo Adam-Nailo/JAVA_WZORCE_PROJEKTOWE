@@ -7,6 +7,8 @@ package org.wzorce_projektowe;
 
 public class Main {
     public static void main(String[] args) {
+
+//        BUILDER
         House dom = new House("ul. Wysoka 2", 2, 3, 12);
         House domek = House.builder()
                 .adress("ul.Wysoka 2")
@@ -15,5 +17,11 @@ public class Main {
                 .windowsNumber(12)
                 .build();
         System.out.println(domek);
+
+//        STATYCZNE METODY WYTWÓRCZE
+//        from, of, valueOf, instanceOf
+        boolean isTrue = true;
+        Boolean.valueOf(isTrue);
+
     }
 }
