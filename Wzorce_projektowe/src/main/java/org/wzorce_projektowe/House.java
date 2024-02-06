@@ -1,18 +1,16 @@
 package org.wzorce_projektowe;
 
+import lombok.*;
+
 /**
  * Created by Adam Seweryn
  */
-public class House {
-    String adress;
-    Integer floorsNumber;
-    Integer doorsNumber;
-    Integer windowsNumber;
 
-    public House(String adress, Integer floorsNumber, Integer doorsNumber, Integer windowsNumber) {
-        this.adress = adress;
-        this.floorsNumber = floorsNumber;
-        this.doorsNumber = doorsNumber;
-        this.windowsNumber = windowsNumber;
-    }
+@Builder
+@Data
+public class House {
+  private String adress;
+  private int floorsNumber;
+  private int doorsNumber;
+  private int windowsNumber;
 }
