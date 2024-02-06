@@ -27,5 +27,8 @@ public class Main {
 
         FamilyHouse familyHouse = FamilyHouse.from(domek);
         System.out.println(familyHouse);
+
+//        SINGLETON
+        Logger.getInstance().logToConsole();
     }
 }

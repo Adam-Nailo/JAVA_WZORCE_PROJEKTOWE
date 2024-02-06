@@ -16,4 +16,5 @@ public class FamilyHouse {
     public static FamilyHouse from(House domek) {
         return new FamilyHouse(domek.getAdress(), domek.getFloorsNumber());
     }
+
 }
