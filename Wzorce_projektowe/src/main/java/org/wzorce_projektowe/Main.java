@@ -1,7 +1,5 @@
 package org.wzorce_projektowe;
 
-import lombok.Builder;
-import lombok.Data;
 
 /**
  * Created by Adam Seweryn
