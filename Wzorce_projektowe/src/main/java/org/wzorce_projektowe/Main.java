@@ -10,7 +10,16 @@ import org.wzorce_projektowe.models.FamilyHouse;
 public class Main {
     public static void main(String[] args) {
 
-//        BUILDER
+        creationPatterns();
+
+//        obsługa interfejsu użytkownika
+//        obsługa zmian repozytorium
+//        obsługa zmian w czujnikach
+
+    }
+
+    private static void creationPatterns() {
+        //        BUILDER
         House dom = new House("ul. Wysoka 2", 2, 3, 12);
         House domek = House.builder()
                 .adress("ul.Wysoka 2")
