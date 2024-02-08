@@ -3,6 +3,9 @@ package org.wzorce_projektowe;
 
 import org.wzorce_projektowe.models.FamilyHouse;
 
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  * Created by Adam Seweryn
  */
@@ -15,6 +18,24 @@ public class Main {
 //        obsługa interfejsu użytkownika
 //        obsługa zmian repozytorium
 //        obsługa zmian w czujnikach
+
+        Observable observableValue = new Observable() {
+            @Override
+            public void notifyObservers(Object arg) {
+                super.setChanged();
+                super.notifyObservers(arg);
+            }
+        };
+
+        observableValue.addObserver(new Observer() {
+            @Override
+            public void update(Observable o, Object arg) {
+                System.out.println("1"+arg.toString());
+            }
+        });
+        observableValue.addObserver((o, arg) -> System.out.println("2"+arg.toString()));
+
+        observableValue.notifyObservers(54);
 
     }
 
