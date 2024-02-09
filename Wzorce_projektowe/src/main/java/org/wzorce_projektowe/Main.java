@@ -2,6 +2,7 @@ package org.wzorce_projektowe;
 
 
 import org.wzorce_projektowe.models.FamilyHouse;
+import org.wzorce_projektowe.obsevers.ObservableTempValue;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -11,7 +12,7 @@ import java.util.Observer;
  */
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         creationPatterns();
 
@@ -19,23 +20,15 @@ public class Main {
 //        obsługa zmian repozytorium
 //        obsługa zmian w czujnikach
 
-        Observable observableValue = new Observable() {
-            @Override
-            public void notifyObservers(Object arg) {
-                super.setChanged();
-                super.notifyObservers(arg);
-            }
-        };
+        ObservableTempValue observableValue = new ObservableTempValue();
 
-        observableValue.addObserver(new Observer() {
-            @Override
-            public void update(Observable o, Object arg) {
-                System.out.println("1"+arg.toString());
-            }
-        });
-        observableValue.addObserver((o, arg) -> System.out.println("2"+arg.toString()));
+        observableValue.addObserver((o, arg) -> System.out.println("1 " + arg.toString()));
+        observableValue.addObserver((o, arg) -> System.out.println("2 " + arg.toString()));
 
-        observableValue.notifyObservers(54);
+        while (true) {
+            Thread.sleep(500);
+            observableValue.setValue((int) (observableValue.getOldTemp() + Math.random() * 6 - 2));
+        }
 
     }
 
