@@ -13,9 +13,24 @@ import java.util.Observer;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-
         creationPatterns();
+        observerPattern();
 
+        Employee mike = new Employee();
+
+        mike.travelStrategy = BikeTravelStrategy();
+        mike.jobResponsibility = DoctorJobStrategy();
+        mike.breakfast = SandwichBreakfastStrategy();
+
+        mike.goToWork();
+        mike.doYourJob();
+        mike.eatYourBreakfast();
+
+        mike.travelStrategy = CarTravelStrategy();
+
+    }
+
+    private static void observerPattern() throws InterruptedException {
 //        obsługa interfejsu użytkownika
 //        obsługa zmian repozytorium
 //        obsługa zmian w czujnikach
@@ -29,8 +44,8 @@ public class Main {
             Thread.sleep(500);
             observableValue.setValue((int) (observableValue.getOldTemp() + Math.random() * 6 - 2));
         }
-
     }
+
 
     private static void creationPatterns() {
         //        BUILDER
