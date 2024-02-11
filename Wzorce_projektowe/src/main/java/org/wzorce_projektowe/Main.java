@@ -3,9 +3,7 @@ package org.wzorce_projektowe;
 
 import org.wzorce_projektowe.models.FamilyHouse;
 import org.wzorce_projektowe.obsevers.ObservableTempValue;
-
-import java.util.Observable;
-import java.util.Observer;
+import org.wzorce_projektowe.strategy.*;
 
 /**
  * Created by Adam Seweryn
@@ -13,21 +11,21 @@ import java.util.Observer;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        creationPatterns();
-        observerPattern();
+//        creationPatterns();
+//        observerPattern();
 
         Employee mike = new Employee();
 
-        mike.travelStrategy = BikeTravelStrategy();
-        mike.jobResponsibility = DoctorJobStrategy();
-        mike.breakfast = SandwichBreakfastStrategy();
+        mike.travelStrategy = new BikeTravelStrategy();
+        mike.jobStrategy = new DoctorJobStrategy();
+        mike.breakfastStrategy = new SandwichBreakfastStrategy();
 
         mike.goToWork();
         mike.doYourJob();
-        mike.eatYourBreakfast();
+        mike.eatYourBreakfast(mike);
 
-        mike.travelStrategy = CarTravelStrategy();
-
+        mike.travelStrategy = new CarTravelStrategy();
+        mike.goToWork();
     }
 
     private static void observerPattern() throws InterruptedException {
