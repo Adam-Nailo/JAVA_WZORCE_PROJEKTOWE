@@ -19,7 +19,7 @@ public class Main {
         mike.travelStrategy = new BikeTravelStrategy();
         mike.jobStrategy = new DoctorJobStrategy();
         mike.breakfastStrategy = new SandwichBreakfastStrategy();
-
+//        Adapter.travel -> .goToWork
         mike.goToWork();
         mike.doYourJob();
         mike.eatYourBreakfast(mike);
