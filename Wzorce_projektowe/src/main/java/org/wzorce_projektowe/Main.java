@@ -1,6 +1,7 @@
 package org.wzorce_projektowe;
 
 
+import org.wzorce_projektowe.adapter.OfficialTrippingEmployee;
 import org.wzorce_projektowe.models.FamilyHouse;
 import org.wzorce_projektowe.obsevers.ObservableTempValue;
 import org.wzorce_projektowe.strategy.*;
