@@ -26,6 +26,9 @@ public class Main {
 
         mike.travelStrategy = new CarTravelStrategy();
         mike.goToWork();
+
+        OfficialTrippingEmployee otMike = new OfficialTrippingEmployee(mike);
+        otMike.goToClient();
     }
 
     private static void observerPattern() throws InterruptedException {
