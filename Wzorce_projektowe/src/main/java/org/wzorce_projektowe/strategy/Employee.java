@@ -2,11 +2,12 @@ package org.wzorce_projektowe.strategy;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.wzorce_projektowe.decorator.Payable;
 
 /**
  * Created by Adam Seweryn
  */
-public class Employee implements TravelStrategy, JobStrategy, BreakfastStrategy {
+public class Employee implements TravelStrategy, JobStrategy, BreakfastStrategy, Payable {
 
     @Getter
     @Setter

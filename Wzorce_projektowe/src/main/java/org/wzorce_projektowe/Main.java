@@ -2,6 +2,10 @@ package org.wzorce_projektowe;
 
 
 import org.wzorce_projektowe.adapter.OfficialTrippingEmployee;
+import org.wzorce_projektowe.decorator.DeadlineBonus;
+import org.wzorce_projektowe.decorator.FreqBonus;
+import org.wzorce_projektowe.decorator.Payable;
+import org.wzorce_projektowe.decorator.SpecialBonus;
 import org.wzorce_projektowe.models.FamilyHouse;
 import org.wzorce_projektowe.obsevers.ObservableTempValue;
 import org.wzorce_projektowe.strategy.*;
@@ -42,7 +46,7 @@ public class Main {
         if (mike.travelStrategy instanceof BikeTravelStrategy){
             employee = new FreqBonus(employee);
         }
-
+        System.out.println("zarobki " + employee.getSalary());
     }
 
     private static void observerPattern() throws InterruptedException {
