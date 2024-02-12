@@ -30,6 +30,10 @@ public class Main {
 
         OfficialTrippingEmployee otMike = new OfficialTrippingEmployee(mike);
         otMike.goToClient();
+
+        System.out.println("zarobki " + mike.getSalary());
+        System.out.println("zarobki " + new FreqBonus(new DeadlineBonus(new SpecialBonus(mike))).getSalary());
+
     }
 
     private static void observerPattern() throws InterruptedException {
