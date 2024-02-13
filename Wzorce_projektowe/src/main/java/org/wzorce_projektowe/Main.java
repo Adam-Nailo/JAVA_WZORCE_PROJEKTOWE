@@ -19,6 +19,8 @@ public class Main {
 //        creationPatterns();
 //        observerPattern();
 
+        giveFreeHouseToBestFreqEmployee();
+
         Employee mike = new Employee();
         mike.setSalary(10000);
 
@@ -47,6 +49,10 @@ public class Main {
             employee = new FreqBonus(employee);
         }
         System.out.println("zarobki " + employee.getSalary());
+    }
+
+    private static void giveFreeHouseToBestFreqEmployee() {
+//        todo
     }
 
     private static void observerPattern() throws InterruptedException {
