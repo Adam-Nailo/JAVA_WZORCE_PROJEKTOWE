@@ -19,40 +19,11 @@ public class Main {
 //        creationPatterns();
 //        observerPattern();
 
-        giveFreeHouseToBestFreqEmployee();
-
-        Employee mike = new Employee();
-        mike.setSalary(10000);
-
-        mike.travelStrategy = new BikeTravelStrategy();
-        mike.jobStrategy = new DoctorJobStrategy();
-        mike.breakfastStrategy = new SandwichBreakfastStrategy();
-//        Adapter.travel -> .goToWork
-        mike.goToWork();
-        mike.doYourJob();
-        mike.eatYourBreakfast(mike);
-
-        mike.travelStrategy = new CarTravelStrategy();
-        mike.goToWork();
-
-        OfficialTrippingEmployee otMike = new OfficialTrippingEmployee(mike);
-        otMike.goToClient();
-
-        System.out.println("zarobki " + mike.getSalary());
-        System.out.println("zarobki " + new FreqBonus(new DeadlineBonus(new SpecialBonus(mike))).getSalary());
-
-        Payable employee = mike;
-        if (mike.getSalary()>8000){
-            employee = new SpecialBonus(employee);
-        }
-        if (mike.travelStrategy instanceof BikeTravelStrategy){
-            employee = new FreqBonus(employee);
-        }
-        System.out.println("zarobki " + employee.getSalary());
-    }
-
-    private static void giveFreeHouseToBestFreqEmployee() {
-//        todo
+        ApiFacade facade = new ApiFacade();
+        Employee mike = facade.createDoctor(10000);
+        facade.pushDoctorToJob(mike);
+        System.out.println("zarobki " + facade.countSalary(mike));
+        facade.giveFreeHouseToBestFreqEmployee(mike);
     }
 
     private static void observerPattern() throws InterruptedException {
