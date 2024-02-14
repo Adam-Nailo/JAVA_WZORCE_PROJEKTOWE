@@ -1,6 +1,8 @@
 package org.wzorce_projektowe;
 
 import org.wzorce_projektowe.adapter.OfficialTrippingEmployee;
+import org.wzorce_projektowe.database.EmployeeCreator;
+import org.wzorce_projektowe.database.EmployeeDatabase;
 import org.wzorce_projektowe.decorator.DeadlineBonus;
 import org.wzorce_projektowe.decorator.FreqBonus;
 import org.wzorce_projektowe.decorator.Payable;
@@ -11,20 +13,15 @@ import org.wzorce_projektowe.strategy.*;
  * Created by Adam Seweryn
  */
 public class ApiFacade {
+
+    private final EmployeeDatabase eDatabase = new EmployeeDatabase();
+    private final EmployeeCreator employeeCreator = new EmployeeCreator();
+
     public Employee createDoctor(int i) {
-        Employee mike = new Employee();
+        Employee mike = employeeCreator.create(EmployeeCreator.BIKE_DOCTOR_SANDWICH);
         mike.setSalary(i);
 
-        mike.travelStrategy = new BikeTravelStrategy();
-        mike.jobStrategy = new DoctorJobStrategy();
-        mike.breakfastStrategy = new SandwichBreakfastStrategy();
-
-        OfficialTrippingEmployee otMike = new OfficialTrippingEmployee(mike);
-        otMike.goToClient();
-
-        System.out.println("zarobki " + mike.getSalary());
-        System.out.println("zarobki " + new FreqBonus(new DeadlineBonus(new SpecialBonus(mike))).getSalary());
-
+        eDatabase.addEmployee(mike);
         return mike;
     }
 
@@ -39,10 +36,10 @@ public class ApiFacade {
 
     public int countSalary(Employee mike) {
         Payable employee = mike;
-        if (mike.getSalary()>8000){
+        if (mike.getSalary() > 8000) {
             employee = new SpecialBonus(employee);
         }
-        if (mike.travelStrategy instanceof BikeTravelStrategy){
+        if (mike.travelStrategy instanceof BikeTravelStrategy) {
             employee = new FreqBonus(employee);
         }
         return employee.getSalary();
